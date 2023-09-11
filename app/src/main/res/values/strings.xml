@@ -1,0 +1,114 @@
+<resources>
+    <string name="app_name">Vibration meter</string>
+    <string name="sub_name">"accurate vibration meter radar"</string>
+    <string name="vibration_fragment">Vibration fragment</string>
+    <string name="saved_fragment">Saved fragment</string>
+    <string name="history_fragment">history fragment</string>
+    <string name="peak">Peak</string>
+    <string name="Avg">AVG</string>
+    <string name="Time">Time</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="soundvalue">29.8</string>
+    <string name="frequency">m/s2</string>
+    <string name="Main_title">{ Modified Mercalli Intensity scale } </string>
+    <string name="first_title">I: Instrumental. Felt by animals </string>
+    <string name="Second_title">II: Weak. Felt indoors by a few people </string>
+    <string name="third_title">III: Slight. Felt indoors by several </string>
+    <string name="four_title">IV: Moderate Hanging object swing</string>
+    <string name="fifth_title">V: Rather Strong. Dishes broken</string>
+    <string name="six_title">VI: Strong. Heavy furniture moved </string>
+    <string name="Seven_title">VII: Very Strong . Difficult to stand</string>
+    <string name="Eight_title">VIII:Destructive. Fall of walls</string>
+    <string name="Nine_title">IX:Violent. Noticeable ground cracks</string>
+    <string name="Ten_title">X: Intense. almost destroyed</string>
+    <string name="Eleven_title">XI: Extreme.Rails bent greatly</string>
+    <string name="Twelve_title">XII: Cataclysmic. Total destruction</string>
+
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+
+    <string name="date">11/02/2023</string>
+    <string name="time">04:24PM</string>
+
+    <string name="empty_values">0.0</string>
+    <string name="time_value">00:00:00</string>
+    <string name="loading">Loading Ad </string>
+    <string name="emptytxt">" No saved Measurement"</string>
+
+    <string name="ADMOB_ADS_UNIT_ID">ca-app-pub-3940256099942544/2247696110</string>
+
+    <string name="interstitial_Ad">ca-app-pub-5405304698167359/3252818830</string>
+    <string name="ad_attribution">Ad</string>
+    <string name="title_activity_drawer_acttivity">DrawerActtivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
+
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="bannerad_unitid">ca-app-pub-5405304698167359/5878982178</string>
+    <string name="interstial_Ad">ca-app-pub-5405304698167359/3252818830</string>
+    <string name="Native_Ads">ca-app-pub-5405304698167359/8573428275</string>
+    <string name="ConfirmExit">Confirm Exit</string>
+
+<!--    &lt;!&ndash;  Test  ADs Ids&ndash;&gt;
+    <string name="app_id">ca-app-pub-3940256099942544~3347511713</string>
+    &lt;!&ndash;      APP open&ndash;&gt;
+    <string name="open_app_highId">ca-app-pub-3940256099942544/3419835294</string>
+    <string name="open_app_mediumid">ca-app-pub-3940256099942544/3419835294</string>
+    <string name="open_app_lowId">ca-app-pub-3940256099942544/3419835294</string>
+    &lt;!&ndash;    Banner&ndash;&gt;
+    <string name="banner_high_Id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="banner_medium_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="banner_low_Id">ca-app-pub-3940256099942544/6300978111</string>
+    &lt;!&ndash;    interstial&ndash;&gt;
+    <string name="interstial_high_Id">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="interstial_medium_id">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="interstial_low_Id">ca-app-pub-3940256099942544/1033173712</string>
+    &lt;!&ndash;    Native &ndash;&gt;
+    <string name="native_high_Id">ca-app-pub-3940256099942544/2247696110</string>
+    <string name="native_medium_id">ca-app-pub-3940256099942544/2247696110</string>
+    <string name="native_low_Id">ca-app-pub-3940256099942544/2247696110</string>
+
+
+    <string name="collapsable_test_banner">ca-app-pub-3940256099942544/2014213617</string>  -->
+
+
+    <!--  Test  ADs Ids-->
+    <string name="app_id">ca-app-pub-8021747795126780~4048352450</string>
+    <!--      APP open-->
+    <string name="open_app_highId">ca-app-pub-8021747795126780/3337906010</string>
+    <string name="open_app_mediumid">ca-app-pub-8021747795126780/7277151029</string>
+    <string name="open_app_lowId">ca-app-pub-8021747795126780/7667747855</string>
+    <!--    Banner-->
+    <string name="banner_high_Id">ca-app-pub-8021747795126780/7468722718</string>
+    <string name="banner_medium_id">ca-app-pub-8021747795126780/5169862439</string>
+    <string name="banner_low_Id">ca-app-pub-8021747795126780/8781804383</string>
+    <!--    interstial-->
+    <string name="interstial_high_Id">ca-app-pub-8021747795126780/7604454089</string>
+    <string name="interstial_medium_id">ca-app-pub-8021747795126780/1172274659</string>
+    <string name="interstial_low_Id">ca-app-pub-8021747795126780/1230617420</string>
+    <!--    Native -->
+    <string name="native_high_Id">ca-app-pub-8021747795126780/9903314363</string>
+    <string name="native_medium_id">ca-app-pub-8021747795126780/2352127402</string>
+    <string name="native_low_Id">ca-app-pub-8021747795126780/6291372415</string>
+
+
+    <string name="collapsable_test_banner">ca-app-pub-8021747795126780/3721049393</string>
+
+
+    <string name="in_app_purchase">remove_ads_vibration_meter</string>
+
+    <string name="native1">Native</string>
+    <string name="interstial">Interstitial</string>
+    <string name="banner">Banner</string>
+
+
+</resources>

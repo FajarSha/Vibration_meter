@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".SecondActivity">
+
+    <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--        android:id="@+id/main_layout"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent">-->
+
+
+    <!--        <androidx.drawerlayout.widget.DrawerLayout-->
+
+    <!--            android:id="@+id/drawer_layout"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            -->
+    <!--            tools:ignore="MissingConstraints">-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/topBar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_margin="6dp"
+
+            android:orientation="horizontal"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="6dp">
+
+
+
+            <ImageView
+                android:id="@+id/drawer_open"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="center"
+
+                android:gravity="center"
+                android:src="@drawable/sort_menue" />
+
+            <TextView
+                android:id="@+id/main_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="Saved"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/ad_img_btn"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+
+                android:src="@drawable/ad_img" />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+
+
+            app:layout_constraintTop_toBottomOf="@+id/topBar_layout">
+
+
+        </FrameLayout>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/light_grey"
+            app:itemIconTint="@color/bottom_nav_color"
+            app:itemTextColor="@color/bottom_nav_color"
+
+            app:layout_constraintBottom_toTopOf="@+id/adLayout"
+
+            app:menu="@menu/bottom_menu">
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/adLayout"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="@color/icon_colorgrey"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/blue_primary"
+                android:padding="4dp"
+                android:text="Ads"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                tools:ignore="MissingConstraints">
+
+            </TextView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navView_drawer"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@android:color/white"
+        app:headerLayout="@layout/drawer_header"
+        app:itemIconTint="@color/black"
+
+        app:itemTextColor="@color/black"
+        app:menu="@menu/drawer_res_file"
+        tools:ignore="MissingConstraints" />
+
+    <!--        </androidx.drawerlayout.widget.DrawerLayout>-->
+
+
+</androidx.drawerlayout.widget.DrawerLayout>
+
+
+    <!--</androidx.constraintlayout.widget.ConstraintLayout>-->

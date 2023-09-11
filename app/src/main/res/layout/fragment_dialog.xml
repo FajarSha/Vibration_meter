@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".DialogFragment">
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="350dp"
+        android:background="@color/black_primary"
+        android:orientation="vertical"
+        app:circularflow_radiusInDP="10dp"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/main_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/Main_title"
+            android:textColor="@color/text_white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/twelve_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/Twelve_title"
+            android:textColor="@color/text_white"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/eleven_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/Eleven_title"
+            android:textColor="@color/text_white"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/ten_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/Ten_title"
+            android:textColor="@color/text_white"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/nine_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/Nine_title"
+            android:textColor="@color/text_white"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/eight_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/Eight_title"
+            android:textColor="@color/text_white"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/seven_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/Seven_title"
+            android:textColor="@color/text_white"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/six_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/six_title"
+            android:textColor="@color/text_white"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/five_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/fifth_title"
+            android:textColor="@color/text_white"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/four_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/four_title"
+            android:textColor="@color/text_white"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/third_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/third_title"
+            android:textColor="@color/text_white"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/second_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/Second_title"
+            android:textColor="@color/text_white"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/first_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/first_title"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+</FrameLayout>

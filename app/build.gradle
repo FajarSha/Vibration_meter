@@ -1,0 +1,91 @@
+plugins {
+    id 'com.android.application'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+}
+
+android {
+    namespace 'com.vibrationmeter.vibrometer.seismometer.measurevibration.checkfrequency.vibration'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.vibrationmeter.vibrometer.seismometer.measurevibration.checkfrequency.vibration"
+        minSdk 24
+        targetSdk 33
+        versionCode 7
+        versionName "1.5.4"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    configurations.all {
+        resolutionStrategy {
+//            force "com.google.android.gms:play-services-basement:17.0.0"
+//            force "com.google.android.gms:play-services-base:17.1.0"
+//            force "com.google.android.gms:play-services-stats:17.0.0"
+//            force "com.google.android.gms:play-services-gcm:17.0.0"
+//            force "com.google.android.gms:play-services-ads:19.7.0"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    implementation 'androidx.navigation:navigation-fragment:2.5.3'
+    implementation 'androidx.navigation:navigation-ui:2.5.3'
+
+//    implementation 'androidx.appcompat:appcompat:1.6.1'
+//    implementation 'com.google.android.material:material:1.9.0'
+//    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+//
+//    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
+//    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
+//    implementation 'androidx.navigation:navigation-fragment:2.5.3'
+//    implementation 'androidx.navigation:navigation-ui:2.5.3'
+//    testImplementation 'junit:junit:4.13.2'
+//    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0-alpha'
+    def lottieVersion = "3.4.0"
+    implementation "com.airbnb.android:lottie:$lottieVersion"
+    implementation 'com.github.anastr:speedviewlib:1.6.0'
+
+    def room_version = "2.5.0"
+//database room library
+    implementation "androidx.room:room-runtime:2.5.2"
+    annotationProcessor "androidx.room:room-compiler:2.5.2"
+    implementation 'com.skyfishjy.ripplebackground:library:1.0.1'
+//    implementation 'com.google.android.gms:play-services-ads:22.3.0'
+    implementation 'com.google.android.gms:play-services-ads:22.3.0'
+    //  implementation 'androidx.work:work-runtime-ktx:2.7.0-alpha05'
+    implementation 'androidx.work:work-runtime:2.8.1'
+
+    def lifecycle_version = "2.3.1"
+    implementation "androidx.lifecycle:lifecycle-runtime:$lifecycle_version"
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+    implementation 'androidx.lifecycle:lifecycle-process:2.3.1'
+    implementation project(':nativetemplates')
+    implementation 'com.android.billingclient:billing:6.0.1'
+    implementation platform('com.google.firebase:firebase-bom:32.2.0')
+
+    implementation("com.google.firebase:firebase-crashlytics")
+    implementation("com.google.firebase:firebase-analytics")
+
+
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view"
+    >
+
+        <group android:checkableBehavior="single">
+    <item
+        android:id="@+id/shareApp"
+        android:icon="@drawable/share_btn"
+        android:title="Share App" />
+    <item
+        android:id="@+id/rate_us"
+        android:icon="@drawable/rate_us"
+        android:title="Rate Us" />
+    <item
+        android:id="@+id/more_app"
+        android:icon="@drawable/more"
+        android:title="More App" />
+    <item
+        android:id="@+id/privacy_policy"
+        android:icon="@drawable/privacy_policy"
+        android:title="Privacy Policy" />
+    <item
+        android:id="@+id/terms"
+        android:icon="@drawable/terms"
+        android:title="Terms and Condition" />
+        </group>
+</menu>

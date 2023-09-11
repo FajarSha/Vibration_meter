@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "79047350149",
+    "project_id": "vibration-meter-b5117",
+    "storage_bucket": "vibration-meter-b5117.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:79047350149:android:19c334270e34203a6fd6ec",
+        "android_client_info": {
+          "package_name": "com.vibrationmeter.vibrometer.seismometer.measurevibration.checkfrequency.vibration"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "79047350149-s1k2rjl4cp48s30vf1dkgoa6qscn2eoh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATiL64tHsctpJd5aJyBObNRoJWeiH4Qfo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "79047350149-s1k2rjl4cp48s30vf1dkgoa6qscn2eoh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

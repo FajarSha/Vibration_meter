@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/queryicon"
+            android:icon="@drawable/help_btn"
+            app:showAsAction="ifRoom|collapseActionView"
+            tools:ignore="MenuTitle" />
+        <item
+            android:id="@+id/refreshicon"
+            android:icon="@drawable/rotate"
+            app:showAsAction="ifRoom|collapseActionView"
+            tools:ignore="MenuTitle" />
+        <item
+            android:id="@+id/minimizeicon"
+            android:icon="@drawable/minimize_btn"
+            app:showAsAction="ifRoom|collapseActionView"
+            tools:ignore="MenuTitle" />
+    </group>
+</menu>
