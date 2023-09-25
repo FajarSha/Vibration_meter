@@ -1,5 +1,6 @@
 package com.vibrationmeter.vibrometer.seismometer.measurevibration.checkfrequency.vibration;
 
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.app.Dialog;
@@ -27,7 +28,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -37,6 +37,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.ads.nativetemplates.NativeTemplateStyle;
 import com.google.android.ads.nativetemplates.TemplateView;
 import com.google.android.gms.ads.AdError;
@@ -111,9 +112,9 @@ public class SecondActivity extends AppCompatActivity implements SensorEventList
             drawerLayout.openDrawer(navigationView);
         });
         adDialogBtn.setOnClickListener(view -> {
-          if(adBlockdialog!=null){
-              adBlockdialog.show();
-          }
+            if (adBlockdialog != null) {
+                adBlockdialog.show();
+            }
         });
 
 
@@ -344,7 +345,10 @@ public class SecondActivity extends AppCompatActivity implements SensorEventList
         CardView yesBtn, NoBtn;
         yesBtn = view1.findViewById(R.id.yesBtn);
         NoBtn = view1.findViewById(R.id.Nobtn);
-
+        /*LottieAnimationView waveAnimation = view1.findViewById(R.id.lottie_animaion);
+        waveAnimation.setRepeatCount(20);
+        waveAnimation.playAnimation();
+*/
         yesBtn.setOnClickListener(view -> {
             if (exitDialog.isShowing()) {
                 exitDialog.dismiss();
@@ -386,17 +390,17 @@ public class SecondActivity extends AppCompatActivity implements SensorEventList
 
     }
 
-    public void loadBannerAd() {
+    private void loadBannerAd() {
         ishighDisplay = true;
         is_Medium_Called = false;
         isthirdCalled = false;
-        showBannerAd(getString(R.string.banner_high_Id), true, false, false, getString(R.string.banner));
+        showBannerAd();
     }
 
-    private void showBannerAd(String unitId, boolean forhigh, boolean formedium, boolean forlow, String Value) {
+    private void showBannerAd() {
         AdRequest adRequest = new AdRequest.Builder().build();
-        adView = new AdView(this);
-        adView.setAdUnitId(unitId);
+        AdView adView = new AdView(this);
+        adView.setAdUnitId(getString(R.string.banner_high_Id));
         adView.setAdSize(AdSize.BANNER);
         adView.loadAd(adRequest);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
@@ -406,19 +410,65 @@ public class SecondActivity extends AppCompatActivity implements SensorEventList
             @Override
             public void onAdLoaded() {
                 super.onAdLoaded();
-                setprority(forhigh, formedium, forlow, getString(R.string.banner));
+
             }
 
             @Override
             public void onAdFailedToLoad(LoadAdError loadAdError) {
                 if (loadAdError != null && loadAdError.getCode() == AdRequest.ERROR_CODE_NO_FILL) {
-                    Log.d(TAG, "onAdFailedToLoad: banner Ad Error for " + loadAdError);
-                    if (formedium) {
-                        checkprority(forhigh, formedium, forlow, getString(R.string.banner), 0);
-                    } else if (is_Medium_Called && !isthirdCalled) {
-                        isthirdCalled = true;
-                        checkprority(forhigh, formedium, forlow, getString(R.string.banner), 0);
-                    }
+                    Log.d(TAG, "onAdFailedToLoad: banner high Ad Error for " + loadAdError);
+                }
+                showMediumBannerAd();
+            }
+        });
+    }
+
+    private void showMediumBannerAd() {
+        AdRequest adRequest = new AdRequest.Builder().build();
+        AdView adView = new AdView(this);
+        adView.setAdUnitId(getString(R.string.banner_medium_id));
+        adView.setAdSize(AdSize.BANNER);
+        adView.loadAd(adRequest);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+        adLayout.addView(adView, params);
+//       this.adView.loadAd(adRequest);
+        adView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+            }
+
+            @Override
+            public void onAdFailedToLoad(LoadAdError loadAdError) {
+                if (loadAdError != null && loadAdError.getCode() == AdRequest.ERROR_CODE_NO_FILL) {
+                    Log.d(TAG, "onAdFailedToLoad: banner mediumr Ad Error for " + loadAdError);
+                }
+                showLowBannerAd();
+            }
+        });
+    }
+
+    private void showLowBannerAd() {
+        AdRequest adRequest = new AdRequest.Builder().build();
+        AdView adView = new AdView(this);
+        adView.setAdUnitId(getString(R.string.banner_low_Id));
+        adView.setAdSize(AdSize.BANNER);
+        adView.loadAd(adRequest);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+        adLayout.addView(adView, params);
+//       this.adView.loadAd(adRequest);
+        adView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+
+            }
+
+            @Override
+            public void onAdFailedToLoad(LoadAdError loadAdError) {
+
+                if (loadAdError != null && loadAdError.getCode() == AdRequest.ERROR_CODE_NO_FILL) {
+                    Log.d(TAG, "onAdFailedToLoad: banner  low Ad Error for " + loadAdError);
 
                 }
             }
@@ -442,13 +492,13 @@ public class SecondActivity extends AppCompatActivity implements SensorEventList
         if (is_High_called && !is_Medium_Called) {
             is_Medium_Called = true;
             if (strvalue.equals(getString(R.string.banner))) {
-                showBannerAd(getString(R.string.banner_medium_id), false, true, false, getString(R.string.banner));
+//                showBannerAd(getString(R.string.banner_medium_id), false, true, false, getString(R.string.banner));
             } else if (strvalue.equals(getString(R.string.interstial))) {
                 showInterstialAd(getString(R.string.interstial_medium_id), false, true, false, getString(R.string.interstial), val);
             }
         } else {
             if (strvalue.equals(getString(R.string.banner))) {
-                showBannerAd(getString(R.string.banner_low_Id), false, false, true, getString(R.string.banner));
+//                showBannerAd(getString(R.string.banner_low_Id), false, false, true, getString(R.string.banner));
             } else if (strvalue.equals(getString(R.string.interstial))) {
                 showInterstialAd(getString(R.string.interstial_low_Id), false, false, true, getString(R.string.interstial), val);
             }
@@ -565,7 +615,9 @@ public class SecondActivity extends AppCompatActivity implements SensorEventList
     @Override
     protected void onPause() {
         super.onPause();
-        adView.pause();
+        if (adView != null) {
+            adView.pause();
+        }
     }
 
     private void showAdLoadingDialogue() {
@@ -587,18 +639,30 @@ public class SecondActivity extends AppCompatActivity implements SensorEventList
     @Override
     protected void onResume() {
         super.onResume();
-        inAppBilling = new InAppBilling(SecondActivity.this, this);
-        isInAppPurchased = inAppBilling.hasUserBoughtInApp();
-//        showNativeAd();
-        if (isInAppPurchased) {
-            adLayout.setVisibility(View.GONE);
-            adDialogBtn.setVisibility(View.GONE);
-//            adRemoveBtn.setVisibility(View.GONE);
+        inAppBilling = new InAppBilling(SecondActivity.this, SecondActivity.this);
+        boolean isPurchased = inAppBilling.isCurrentpurchased();
+        Log.d(TAG, "onResume: " + isPurchased);
+        if (isPurchased) {
+            inAppBilling.is_Current_Purchased = false;
+            Intent i = new Intent(this, MainActivity.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            i.addFlags(FLAG_ACTIVITY_NEW_TASK);
+            startActivity(i);
+            finish();
         } else {
-            adLayout.setVisibility(View.VISIBLE);
-            adDialogBtn.setVisibility(View.VISIBLE);
-//            adRemoveBtn.setVisibility(View.VISIBLE);
-            loadBannerAd();
+            isInAppPurchased = inAppBilling.hasUserBoughtInApp();
+            showNativeAd();
+            if (isInAppPurchased) {
+                adLayout.setVisibility(View.GONE);
+                adDialogBtn.setVisibility(View.GONE);
+            } else {
+                adLayout.setVisibility(View.VISIBLE);
+                adDialogBtn.setVisibility(View.VISIBLE);
+                loadBannerAd();
+            }
+            if (loadindAdDialogue != null && loadindAdDialogue.isShowing()) {
+                loadindAdDialogue.dismiss();
+            }
         }
         if (loadindAdDialogue != null && loadindAdDialogue.isShowing()) {
             loadindAdDialogue.dismiss();
@@ -619,7 +683,7 @@ public class SecondActivity extends AppCompatActivity implements SensorEventList
                 });
     }
 
-    public void selectDrawerItem(MenuItem menuItem) {
+    public boolean selectDrawerItem(MenuItem menuItem) {
         // Create a new fragment and specify the fragment to show based on nav item clicked
         Fragment fragment = null;
         Class fragmentClass;
@@ -640,17 +704,19 @@ public class SecondActivity extends AppCompatActivity implements SensorEventList
 //                Toast.makeText(getActivity(), "Second object clicked", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.more_app:
-                Toast.makeText(this, "More object clicked", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/developer?id=Bhagowal+Hood")));
                 break;
             case R.id.privacy_policy:
-                Toast.makeText(this, "privacy_policy object clicked", Toast.LENGTH_SHORT).show();
-                break;
             case R.id.terms:
-                Toast.makeText(this, "terms object clicked", Toast.LENGTH_SHORT).show();
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://sites.google.com/view/bhagowalhood/home"));
+                startActivity(browserIntent);
+//                Toast.makeText(this, "terms object clicked", Toast.LENGTH_SHORT).show();
                 break;
             default:
         }
-        menuItem.setChecked(true);
-//        drawerLayout.closeDrawers();
+        drawerLayout.closeDrawers();
+        return false;
+
+
     }
 }

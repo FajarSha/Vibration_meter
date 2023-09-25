@@ -58,8 +58,8 @@
     <string name="Native_Ads">ca-app-pub-5405304698167359/8573428275</string>
     <string name="ConfirmExit">Confirm Exit</string>
 
-<!--    &lt;!&ndash;  Test  ADs Ids&ndash;&gt;
-    <string name="app_id">ca-app-pub-3940256099942544~3347511713</string>
+    <!--  Test  ADs Ids-->
+<!--    <string name="app_id">ca-app-pub-3940256099942544~3347511713</string>
     &lt;!&ndash;      APP open&ndash;&gt;
     <string name="open_app_highId">ca-app-pub-3940256099942544/3419835294</string>
     <string name="open_app_mediumid">ca-app-pub-3940256099942544/3419835294</string>
@@ -78,10 +78,10 @@
     <string name="native_low_Id">ca-app-pub-3940256099942544/2247696110</string>
 
 
-    <string name="collapsable_test_banner">ca-app-pub-3940256099942544/2014213617</string>  -->
+    <string name="collapsable_test_banner">ca-app-pub-3940256099942544/2014213617</string>-->
 
 
-    <!--  Test  ADs Ids-->
+    <!--  Live  ADs Ids-->
     <string name="app_id">ca-app-pub-8021747795126780~4048352450</string>
     <!--      APP open-->
     <string name="open_app_highId">ca-app-pub-8021747795126780/3337906010</string>
@@ -102,7 +102,6 @@
 
 
     <string name="collapsable_test_banner">ca-app-pub-8021747795126780/3721049393</string>
-
 
     <string name="in_app_purchase">remove_ads_vibration_meter</string>
 

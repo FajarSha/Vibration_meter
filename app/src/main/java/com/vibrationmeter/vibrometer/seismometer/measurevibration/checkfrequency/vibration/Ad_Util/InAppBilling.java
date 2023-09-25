@@ -40,6 +40,7 @@ public class InAppBilling implements PurchasesUpdatedListener {
     String PRODUCT_ID;
     public static final String PREF_FILE = "MyPref";
     public static final String PURCHASE_KEY = "remove_ads_screenmirroring";
+    public static boolean is_Current_Purchased = false;
 
     public InAppBilling(Context context, Activity activity) {
         this.context = context;
@@ -52,6 +53,8 @@ public class InAppBilling implements PurchasesUpdatedListener {
         billingClient = BillingClient.newBuilder(context)
                 .enablePendingPurchases().setListener(this).build();
         PRODUCT_ID = context.getString(R.string.in_app_purchase);
+//        is_Current_Purchased=true;
+//        savePurchaseValueToPref(true);
     }
 
     @Override
@@ -64,11 +67,8 @@ public class InAppBilling implements PurchasesUpdatedListener {
         }
         //if item already purchased then check and reflect changes
         else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED) {
-//            Purchase.PurchasesResult queryAlreadyPurchasesResult = billingClient.queryPurchases(INAPP);
-//            List<Purchase> alreadyPurchases = queryAlreadyPurchasesResult.getPurchasesList();
-//            if (purchases != null) {
-//                handlePurchases(purchases);
-//            }
+
+            is_Current_Purchased = true;
             savePurchaseValueToPref(true);
             Toast.makeText(context, "Already Purchased", Toast.LENGTH_SHORT).show();
         }
@@ -76,11 +76,10 @@ public class InAppBilling implements PurchasesUpdatedListener {
         else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.USER_CANCELED) {
             Toast.makeText(context, "Purchase Canceled", Toast.LENGTH_SHORT).show();
         } else {
-//            Toast.makeText(getApplicationContext(), "Error " + billingResult.getDebugMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
-    //initiate purchase on button click
+
     public void purchase(View view) {
         //check if service is already connected
         InappCalling();
@@ -180,49 +179,34 @@ public class InAppBilling implements PurchasesUpdatedListener {
             //if item is purchased
 //            if (PRODUCT_ID.equals(purchase.getProducts()) && purchase.getPurchaseState() == Purchase.PurchaseState.PURCHASED) {
             if (purchase.getPurchaseState() == Purchase.PurchaseState.PURCHASED) {
-                //verifyPurchase(purchase);
-//                if (!verifyValidSignature(purchase.getOriginalJson(), purchase.getSignature())) {
-//                    // Invalid purchase
-//                    // show error to user
-//                    Toast.makeText(context, "Error : Invalid Purchase", Toast.LENGTH_SHORT).show();
-//                    return;
-//                }
 
-                // else purchase is valid
-                //if item is purchased and not acknowledged
                 if (!purchase.isAcknowledged()) {
                     AcknowledgePurchaseParams acknowledgePurchaseParams =
                             AcknowledgePurchaseParams.newBuilder()
                                     .setPurchaseToken(purchase.getPurchaseToken())
                                     .build();
                     billingClient.acknowledgePurchase(acknowledgePurchaseParams, ackPurchase);
+                    is_Current_Purchased = true;
                 }
                 //else item is purchased and also acknowledged
                 else {
                     // Grant entitlement to the user on item purchase
                     // restart activity
                     if (!getPurchaseValueFromPref()) {
+                        is_Current_Purchased = true;
                         savePurchaseValueToPref(true);
                         // removeAds();
                         Toast.makeText(context, "Item Purchased", Toast.LENGTH_SHORT).show();
-//                        activity.recreate();
-                        restartApplication();
-
-                        // Finish the current activity to ensure it's not added to the back stack
-                        activity.finish();
                         Log.d(TAG, "handlePurchases: item purchased Scenario");
                     }
                 }
 
             }
-            //if purchase is pending
-//            else if (PRODUCT_ID.equals(purchase.getProducts()) && purchase.getPurchaseState() == Purchase.PurchaseState.PENDING) {
+
             else if (purchase.getPurchaseState() == Purchase.PurchaseState.PENDING) {
                 Toast.makeText(context,
                         "Purchase is Pending. Please complete Transaction", Toast.LENGTH_SHORT).show();
             }
-            //if purchase is unknown
-//            else if (PRODUCT_ID.equals(purchase.getProducts()) && purchase.getPurchaseState() == Purchase.PurchaseState.UNSPECIFIED_STATE) {
             else if (purchase.getPurchaseState() == Purchase.PurchaseState.UNSPECIFIED_STATE) {
                 savePurchaseValueToPref(false);
 //                purchaseStatus.setText("Purchase Status : Not Purchased");
@@ -240,30 +224,17 @@ public class InAppBilling implements PurchasesUpdatedListener {
         public void onAcknowledgePurchaseResponse(BillingResult billingResult) {
             if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
                 //if purchase is acknowledged
+
                 savePurchaseValueToPref(true);
                 Toast.makeText(context, "Item Purchased", Toast.LENGTH_SHORT).show();
 //                activity.recreate();
-                restartApplication();
+//                restartApplication();
 
             }
         }
     };
 
-    /**
-     * Verifies that the purchase was signed correctly for this developer's public key.
-     * <p>Note: It's strongly recommended to perform such check on your backend since hackers can
-     * replace this method with "constant true" if they decompile/rebuild your app.
-     * </p>
-     */
-   /* private boolean verifyValidSignature(String signedData, String signature) {
-        try {
-            // To get key go to Developer Console > Select your app > Development Tools > Services & APIs.
-            String base64Key = "Add Your Key Here";
-            return Security.verifyPurchase(base64Key, signedData, signature);
-        } catch (IOException e) {
-            return false;
-        }
-    }*/
+
     public void savePurchaseValueToPref(boolean value) {
         getPreferenceEditObject().putBoolean(PURCHASE_KEY, value).commit();
     }
@@ -295,6 +266,10 @@ public class InAppBilling implements PurchasesUpdatedListener {
             context.startActivity(intent);
             activity.finish();
         }
+    }
+
+    public boolean isCurrentpurchased() {
+        return is_Current_Purchased;
     }
 
 }

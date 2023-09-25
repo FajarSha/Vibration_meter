@@ -98,7 +98,7 @@ public class MyApplication extends Application implements ActivityLifecycleCallb
         }
         if (currentActivity instanceof TutorialActivity) {
             appOpenAdManager.showAdIfAvailable(currentActivity);
-            clickCount=1;
+
         }
     }
 
@@ -108,9 +108,11 @@ public class MyApplication extends Application implements ActivityLifecycleCallb
 
     @Override
     public void onActivityPaused(@NonNull Activity activity) {
+        appOpenAdManager.appOpenAd=null;
     }
 
     @Override
+
     public void onActivityStopped(@NonNull Activity activity) {
     }
 
@@ -121,7 +123,8 @@ public class MyApplication extends Application implements ActivityLifecycleCallb
     @Override
     public void onActivityDestroyed(@NonNull Activity activity) {
         currentActivity = null;
-        appOpenAdManager.releaseAppOpenAd();
+        appOpenAdManager.appOpenAd=null;
+//        appOpenAdManager.releaseAppOpenAd();
     }
 
     /**
@@ -388,8 +391,11 @@ public class MyApplication extends Application implements ActivityLifecycleCallb
             });
 
             isShowingAd = true;
-
-            appOpenAd.show(activity);
+            InAppBilling inAppBilling = new InAppBilling(activity, activity);
+            boolean isInAppPurchased=inAppBilling.hasUserBoughtInApp();
+            if (!isInAppPurchased) {
+                appOpenAd.show(activity);
+            }
 
         }
 

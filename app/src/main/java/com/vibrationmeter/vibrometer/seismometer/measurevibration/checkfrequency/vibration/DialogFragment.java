@@ -33,7 +33,8 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment impleme
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(fragment_dialog, null);
+//        View view = inflater.inflate(fragment_dialog, null);
+        View view = inflater.inflate(R.layout.fragment_dialog, null);
         initliazation(view);
 
 

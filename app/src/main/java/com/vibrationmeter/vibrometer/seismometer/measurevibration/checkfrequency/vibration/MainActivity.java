@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     boolean isInAppPurchase = false;
     ConstraintLayout adLayout;
     InAppBilling inAppBilling;
+    AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,9 +60,18 @@ public class MainActivity extends AppCompatActivity {
         LottieValueCallback<ColorFilter> callback = new LottieValueCallback<ColorFilter>(filter);
         lottie.addValueCallback(keyPath, LottieProperty.COLOR_FILTER, callback);
         lottie.playAnimation();
+
         inAppBilling = new InAppBilling(this, this);
+
         isInAppPurchase=inAppBilling.hasUserBoughtInApp();
+
+        if (isInAppPurchase) {
+            adLayout.setVisibility(View.GONE);
+        } else {
+
+        }
         if(isInAppPurchase){
+            adLayout.setVisibility(View.GONE);
             new Handler().postDelayed(() -> {
                 Intent localIntent = new Intent(MainActivity.this, TutorialActivity.class);
                 MainActivity.this.startActivity(localIntent);
@@ -69,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
             }, 3000L);
         }
         else {
+            adLayout.setVisibility(View.VISIBLE);
+            loadBannerAd(getString(R.string.collapsable_test_banner));
             new Handler().postDelayed(() -> {
                 Intent localIntent = new Intent(MainActivity.this, TutorialActivity.class);
                 MainActivity.this.startActivity(localIntent);
@@ -83,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadBannerAd(String unitId) {
-        AdView adView = new AdView(this);
+         adView = new AdView(this);
         adView.setAdUnitId(unitId);
         adView.setAdSize(AdSize.BANNER);
 //        adView.loadAd(adRequest);
@@ -123,6 +135,14 @@ public class MainActivity extends AppCompatActivity {
         } else {
             adLayout.setVisibility(View.VISIBLE);
             loadBannerAd(getString(R.string.collapsable_test_banner));
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if(adView!=null){
+            adView.pause();
         }
     }
 
